@@ -1,9 +1,31 @@
 <html>
-  <head>
-    <title>React Example</title>
-    <script type="application/javascript" src="dist/Todo1.min.js"></script>
-  </head>
-  <body>
-    <h1>TODO2 Example</h1>
-  </body>
+<head>
+  <title>React Example</title>
+  <script type="application/javascript" src="dist/Todo1.min.js"></script>
+  <link rel="stylesheet" href="/foundation.min.css">
+  <style type="text/css">
+    body {
+      margin: 2rem 0;
+    }
+  </style>
+</head>
+<body>
+  <div class="row">
+    <div class="small-6 columns">
+      <h3>CREATE</h3>
+      <form>
+        <label>
+          Thing to do:
+          <input type="text" />
+        </label>
+        <button type="submit" class="button">Add</button>
+      </form>
+      <h3>TODOS</h3>
+      <ul>
+        <li>One thing [<a href="#">remove</a>]</li>
+        <li>Another thing [<a href="#">remove</a>]</li>
+      </ul>
+    </div>
+  </div>
+</body>
 </html>
