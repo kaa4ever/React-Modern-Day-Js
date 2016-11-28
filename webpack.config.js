@@ -8,7 +8,12 @@ module.exports = {
     Todo1: [
       'react-hot-loader/patch',
       'webpack-hot-middleware/client',
-      './src/todo1'
+      './src/todo-react/app'
+    ],
+    Todo2: [
+      'react-hot-loader/patch',
+      'webpack-hot-middleware/client',
+      './src/todo-redux/app'
     ],
   },
   output: {
