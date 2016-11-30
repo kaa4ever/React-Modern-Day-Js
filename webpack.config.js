@@ -6,10 +6,10 @@ module.exports = {
   debug: true,
   entry: {
     Todo1: [
-      './src/todo-react/app'
+      './src/1-todo-react/app'
     ],
     Todo2: [
-      './src/todo-redux/app'
+      './src/2-todo-redux/app'
     ],
   },
   output: {

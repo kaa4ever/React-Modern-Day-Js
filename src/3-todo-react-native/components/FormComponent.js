@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { AddTodoAction } from '../actions';
 
 class Form extends Component {
 
@@ -12,7 +14,7 @@ class Form extends Component {
 
   onSubmit(event) {
     event.preventDefault();
-    this.props.addTodo(this.input.value);
+    this.props.dispatch(AddTodoAction(this.input.value));
     this.input.value = '';
   }
 
@@ -29,4 +31,4 @@ class Form extends Component {
   }
 }
 
-export default Form;
+export default connect()(Form);

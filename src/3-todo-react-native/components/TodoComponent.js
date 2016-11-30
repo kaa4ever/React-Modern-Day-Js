@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { removeToDoAction, markToDoAsDone } from '../actions';
 
 const Todo = ({ todo, removeTodo, markTodoAsDone }) => {
   const style = { textDecoration: todo.isDone ? 'line-through' : 'inherit' };
@@ -17,4 +19,11 @@ const Todo = ({ todo, removeTodo, markTodoAsDone }) => {
   );
 };
 
-export default Todo;
+const mapDispatchToProps = (dispatch) => {
+  return {
+    removeTodo: (id) => { dispatch(removeToDoAction(id)); },
+    markTodoAsDone: (id) => { dispatch(markToDoAsDone(id)); },
+  };
+};
+
+export default connect(null, mapDispatchToProps)(Todo);
