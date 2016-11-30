@@ -6,13 +6,9 @@ module.exports = {
   debug: true,
   entry: {
     Todo1: [
-      'react-hot-loader/patch',
-      'webpack-hot-middleware/client',
       './src/todo-react/app'
     ],
     Todo2: [
-      'react-hot-loader/patch',
-      'webpack-hot-middleware/client',
       './src/todo-redux/app'
     ],
   },
@@ -21,15 +17,16 @@ module.exports = {
     filename: '[name].min.js',
     publicPath: '/dist/'
   },
-  plugins: [
-    new webpack.HotModuleReplacementPlugin()
-  ],
   module: {
     loaders: [
       {
-        test: /\.jsx?$/,
-        loader: 'babel?presets[]=es2015,presets[]=stage-0,presets[]=react',
-        include: path.join(__dirname, 'src')
+        test: /\.js$/,
+        exclude: /node_modules/,
+        loader: 'babel',
+        include: path.join(__dirname, 'src'),
+        query: {
+          presets: ['es2015', 'stage-0', 'react']
+        },
       }
     ]
   }
