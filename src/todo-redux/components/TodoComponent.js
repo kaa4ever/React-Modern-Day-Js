@@ -1,27 +1,20 @@
 import React, { Component } from 'react';
 
-class Todo extends Component {
-  constructor(props) {
-    super(props);
-
-    this.state = { isDone: false };
-  }
-
-  render() {
-    const style = { textDecoration: this.state.isDone ? 'line-through' : 'inherit' };
-    return (
-      <li>
-        <span style={style}>{this.props.headline}</span>
-        <a onClick={(e) => {
-          e.preventDefault();
-          this.setState({ isDone: true });
-        }}>[done]</a>
-        <a onClick={(e) => {
-          e.preventDefault();
-          this.props.removeTodo(this.props.index);
-        }}>[remove]</a></li>
-    );
-  }
-}
+const Todo = ({ todo, removeTodo, markTodoAsDone }) => {
+  const style = { textDecoration: todo.isDone ? 'line-through' : 'inherit' };
+  return (
+    <li>
+      <span style={style}>{todo.title}</span>
+      <a onClick={(e) => {
+        e.preventDefault();
+        markTodoAsDone(todo.id);
+      }}>[done]</a>
+      <a onClick={(e) => {
+        e.preventDefault();
+        removeTodo(todo.id);
+      }}>[remove]</a>
+    </li>
+  );
+};
 
 export default Todo;
