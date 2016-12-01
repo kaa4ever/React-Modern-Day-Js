@@ -16,7 +16,7 @@ class Form extends Component {
   onSubmit() {
     if (this.state.input) {
       this.props.dispatch(AddTodoAction(this.state.input));
-      this.setState({input: ''});
+      this.setState({ input: '' });
     }
   }
 
