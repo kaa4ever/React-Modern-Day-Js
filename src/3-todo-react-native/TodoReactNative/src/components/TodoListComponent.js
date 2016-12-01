@@ -1,14 +1,16 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
+import { ScrollView } from 'react-native';
 import Todo from './TodoComponent';
 
+
 const TodoList = ({ todos }) => (
-  <ul>
+  <ScrollView>
     {todos.map(todo => (
       <Todo key={todo.id} todo={todo} />
     ))}
-  </ul>
+  </ScrollView>
 );
 
 const mapStateToProps = (state) => {
