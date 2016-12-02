@@ -1,45 +1,22 @@
-export default (state = {}, action) => {
-  const todos = state.todos ? state.todos.slice() : [];
+export default (state = { todos: [] }, action) => {
+  const todos = state.todos.slice();
   switch (action.type) {
-    case 'ADD_TO_ACTION':
-      todos.push({
-        id: todos.length,
-        title: action.title,
-        isDone: false,
-      });
+    case 'ADD_TODO': {
+      todos.push(action.todo);
       return {
         ...state,
         todos,
       };
-    case 'REMOVE_TO_ACTION':
-      let found = false;
-      todos.forEach((todo, index) => {
-        if (todo.id === action.id) {
-          found = index;
-        }
-      });
-
-      if (found !== false) {
-        todos.splice(found, 1);
-      }
+    }
+    case 'REMOVE_TODO': {
+      todos.splice(action.index, 1);
       return {
         ...state,
         todos,
       };
-    case 'MARK_TO_AS_DONE':
-      todos.forEach((todo, index) => {
-        if (todo.id === action.id) {
-          todos[index] = {
-            ...todo,
-            isDone: true,
-          };
-        }
-      });
-
-      return {
-        ...state,
-        todos,
-      };
+    }
+    default: {
+      return state;
+    }
   }
-  return state;
 }

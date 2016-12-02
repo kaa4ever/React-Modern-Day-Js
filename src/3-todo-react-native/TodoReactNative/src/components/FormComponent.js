@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { AddTodoAction } from '../actions';
+import { addTodoAction } from '../actions';
 
 import { View, Text, TextInput, TouchableHighlight, StyleSheet } from 'react-native';
 
@@ -15,7 +15,7 @@ class Form extends Component {
 
   onSubmit() {
     if (this.state.input) {
-      this.props.dispatch(AddTodoAction(this.state.input));
+      this.props.dispatch(addTodoAction(this.state.input));
       this.setState({ input: '' });
     }
   }

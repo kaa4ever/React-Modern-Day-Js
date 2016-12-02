@@ -7,8 +7,8 @@ import Todo from './TodoComponent';
 
 const TodoList = ({ todos }) => (
   <ScrollView>
-    {todos.map(todo => (
-      <Todo key={todo.id} todo={todo} />
+    {todos.map((todo, index) => (
+      <Todo key={index} todo={todo} index={index} />
     ))}
   </ScrollView>
 );

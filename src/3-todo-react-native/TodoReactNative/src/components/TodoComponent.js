@@ -1,17 +1,13 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { removeToDoAction, markToDoAsDone } from '../actions';
+import { removeTodoAction } from '../actions';
 import { View, Text, TouchableHighlight, StyleSheet } from 'react-native';
 
-const Todo = ({ todo, removeTodo, markTodoAsDone }) => {
-  const style = { color: todo.isDone ? 'green' : 'black' };
+const Todo = ({ todo, index, removeTodo }) => {
   return (
     <View style={styles.container}>
-      <Text style={style}>{todo.title}</Text>
-      <TouchableHighlight style={styles.button} onPress={() => markTodoAsDone(todo.id) }>
-        <Text>done</Text>
-      </TouchableHighlight>
-      <TouchableHighlight style={styles.button} onPress={() => removeTodo(todo.id) }>
+      <Text>{todo}</Text>
+      <TouchableHighlight style={styles.button} onPress={() => removeTodo(index) }>
         <Text>remove</Text>
       </TouchableHighlight>
     </View>
@@ -20,8 +16,7 @@ const Todo = ({ todo, removeTodo, markTodoAsDone }) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    removeTodo: (id) => { dispatch(removeToDoAction(id)); },
-    markTodoAsDone: (id) => { dispatch(markToDoAsDone(id)); },
+    removeTodo: (index) => { dispatch(removeTodoAction(index)); },
   };
 };
 
