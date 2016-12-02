@@ -4,23 +4,23 @@ import { Provider } from 'react-redux';
 import { createStore, applyMiddleware } from 'redux';
 import createLogger from 'redux-logger';
 
-import Reducer from './reducer';
 import HeadlineComponent from './components/HeadlineComponent';
 import FormComponent from './components/FormComponent';
 import TodoListComponent from './components/TodoListComponent';
+import Reducer from './reducer';
 
 const store = createStore(
   Reducer,
   applyMiddleware(createLogger())
 );
 
-const App = () => (
+const AppComponent = () => (
   <Provider store={store}>
     <div className="row">
       <div className="small-6 columns">
-        <HeadlineComponent headline="Create" />
+        <HeadlineComponent headline="CREATE" />
         <FormComponent />
-        <HeadlineComponent headline="TODOS" />
+        <HeadlineComponent headline="TODOS"/>
         <TodoListComponent />
       </div>
     </div>
@@ -28,6 +28,6 @@ const App = () => (
 );
 
 render(
-  <App />,
+  <AppComponent />,
   document.getElementById('app')
 );

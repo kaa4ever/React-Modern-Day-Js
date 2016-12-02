@@ -1,29 +1,17 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { removeToDoAction, markToDoAsDone } from '../actions';
 
-const Todo = ({ todo, removeTodo, markTodoAsDone }) => {
-  const style = { textDecoration: todo.isDone ? 'line-through' : 'inherit' };
-  return (
-    <li>
-      <span style={style}>{todo.title}</span>
-      <a onClick={(e) => {
-        e.preventDefault();
-        markTodoAsDone(todo.id);
-      }}>[done]</a>
-      <a onClick={(e) => {
-        e.preventDefault();
-        removeTodo(todo.id);
-      }}>[remove]</a>
-    </li>
-  );
+import { removeTodoAction } from '../actions';
+
+const TodoComponent = ({ todo, index, removeTodo }) => {
+  return <li>{todo} [<a href="#" onClick={e => {
+    e.preventDefault();
+    removeTodo(index);
+  }}>remove</a>]</li>;
 };
 
-const mapDispatchToProps = (dispatch) => {
-  return {
-    removeTodo: (id) => { dispatch(removeToDoAction(id)); },
-    markTodoAsDone: (id) => { dispatch(markToDoAsDone(id)); },
-  };
-};
+const mapDispatchToProps = (dispatch) => ({
+  removeTodo: index => { dispatch(removeTodoAction(index)); },
+});
 
-export default connect(null, mapDispatchToProps)(Todo);
+export default connect(null, mapDispatchToProps)(TodoComponent);

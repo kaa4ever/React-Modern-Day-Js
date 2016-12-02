@@ -1,14 +1,8 @@
-export const AddTodoAction = (title) => ({
-  type: 'ADD_TO_ACTION',
-  title,
+export const addTodoAction = (todo) => ({
+  type: 'ADD_TODO',
+  todo,
 });
-
-export const removeToDoAction = (id) => ({
-  type: 'REMOVE_TO_ACTION',
-  id,
-});
-
-export const markToDoAsDone = (id) => ({
-  type: 'MARK_TO_AS_DONE',
-  id,
+export const removeTodoAction = (index) => ({
+  type: 'REMOVE_TODO',
+  index,
 });
