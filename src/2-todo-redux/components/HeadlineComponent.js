@@ -1,7 +1,7 @@
 import React from 'react';
 
-const Component = ({ headline }) => (
+const HeadlineComponent = ({ headline }) => (
   <h3>{headline}</h3>
 );
 
-export default Component;
+export default HeadlineComponent;

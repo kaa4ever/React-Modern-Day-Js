@@ -1,20 +1,10 @@
 import React, { Component } from 'react';
 
-const Todo = ({ todo, removeTodo, markTodoAsDone }) => {
-  const style = { textDecoration: todo.isDone ? 'line-through' : 'inherit' };
-  return (
-    <li>
-      <span style={style}>{todo.title}</span>
-      <a onClick={(e) => {
-        e.preventDefault();
-        markTodoAsDone(todo.id);
-      }}>[done]</a>
-      <a onClick={(e) => {
-        e.preventDefault();
-        removeTodo(todo.id);
-      }}>[remove]</a>
-    </li>
-  );
+const TodoComponent = ({ todo, index, removeTodo }) => {
+  return <li>{todo} [<a href="#" onClick={e => {
+    e.preventDefault();
+    removeTodo(index);
+  }}>remove</a>]</li>;
 };
 
-export default Todo;
+export default TodoComponent;

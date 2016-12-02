@@ -1,19 +1,19 @@
 import React, { Component } from 'react';
 
-class Form extends Component {
+class FormComponent extends Component {
 
   constructor(props) {
     super(props);
 
-    this.input = null;
+    this.state = { input: '' };
 
     this.onSubmit = this.onSubmit.bind(this);
   }
 
   onSubmit(event) {
     event.preventDefault();
-    this.props.addTodo(this.input.value);
-    this.input.value = '';
+    this.props.addTodo(this.state.input);
+    this.setState({ input: '' });
   }
 
   render() {
@@ -21,7 +21,9 @@ class Form extends Component {
       <form onSubmit={this.onSubmit}>
         <label>
           Thing to do:
-          <input ref={node => { this.input = node; }} type="text" required />
+          <input type="text" value={this.state.input} onChange={e => {
+            this.setState({ input: e.target.value });
+          }} />
         </label>
         <button type="submit" className="button">Add</button>
       </form>
@@ -29,4 +31,4 @@ class Form extends Component {
   }
 }
 
-export default Form;
+export default FormComponent;

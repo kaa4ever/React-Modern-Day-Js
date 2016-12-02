@@ -1,11 +1,20 @@
 import React, { Component } from 'react';
 import { render } from 'react-dom';
+import { Provider } from 'react-redux';
+import { createStore, applyMiddleware } from 'redux';
+import createLogger from 'redux-logger';
 
 import HeadlineComponent from './components/HeadlineComponent';
 import FormComponent from './components/FormComponent';
 import TodoListComponent from './components/TodoListComponent';
 
-class App extends Component {
+const store = createStore(
+  Reducer,
+  applyMiddleware(createLogger())
+);
+
+class AppComponent extends Component {
+
   constructor(props) {
     super(props);
 
@@ -13,44 +22,17 @@ class App extends Component {
 
     this.addTodo = this.addTodo.bind(this);
     this.removeTodo = this.removeTodo.bind(this);
-    this.markTodoAsDone = this.markTodoAsDone.bind(this);
   }
 
   addTodo(todo) {
     const todos = this.state.todos;
-    todos.push({
-      id: todos.length,
-      title: todo,
-      isDone: false,
-    });
+    todos.push(todo);
     this.setState({ todos });
   }
 
-  removeTodo(id) {
+  removeTodo(index) {
     const todos = this.state.todos;
-
-    let found = false;
-    todos.forEach((todo, index) => {
-      if (todo.id === id) {
-        found = index;
-      }
-    });
-
-    if (found !== false) {
-      todos.splice(found, 1);
-      this.setState({ todos });
-    }
-  }
-
-  markTodoAsDone(id) {
-    const todos = this.state.todos;
-
-    todos.forEach(todo => {
-      if (todo.id === id) {
-        todo.isDone = true;
-      }
-    });
-
+    todos.splice(index, 1);
     this.setState({ todos });
   }
 
@@ -58,10 +40,10 @@ class App extends Component {
     return (
       <div className="row">
         <div className="small-6 columns">
-          <HeadlineComponent headline="Create" />
+          <HeadlineComponent headline="CREATE" />
           <FormComponent addTodo={this.addTodo} />
-          <HeadlineComponent headline="TODOS" />
-          <TodoListComponent todos={this.state.todos} markTodoAsDone={this.markTodoAsDone} removeTodo={this.removeTodo} />
+          <HeadlineComponent headline="TODOS"/>
+          <TodoListComponent todos={this.state.todos} removeTodo={this.removeTodo} />
         </div>
       </div>
     );
@@ -69,6 +51,6 @@ class App extends Component {
 }
 
 render(
-  <App />,
+  <AppComponent />,
   document.getElementById('app')
 );

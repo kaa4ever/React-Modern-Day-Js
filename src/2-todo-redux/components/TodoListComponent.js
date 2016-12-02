@@ -1,13 +1,15 @@
 import React from 'react';
 
-import Todo from './TodoComponent';
+import TodoComponent from './TodoComponent';
 
-const TodoList = ({ todos, removeTodo, markTodoAsDone }) => (
-  <ul>
-    {todos.map(todo => (
-      <Todo key={todo.id} todo={todo} removeTodo={removeTodo} markTodoAsDone={markTodoAsDone} />
-    ))}
-  </ul>
-);
+const TodoListComponent = ({ todos, removeTodo }) => {
+  return (
+    <ul>
+      {todos.map((todo, index) => (
+        <TodoComponent todo={todo} index={index} removeTodo={removeTodo} />
+      ))}
+    </ul>
+  );
+};
 
-export default TodoList;
+export default TodoListComponent;
