@@ -7,6 +7,7 @@ import createLogger from 'redux-logger';
 import HeadlineComponent from './components/HeadlineComponent';
 import FormComponent from './components/FormComponent';
 import TodoListComponent from './components/TodoListComponent';
+import Reducer from './reducer';
 
 const store = createStore(
   Reducer,
